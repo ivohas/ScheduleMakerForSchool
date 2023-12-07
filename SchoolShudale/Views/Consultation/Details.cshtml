@@ -1,0 +1,27 @@
+﻿@using Schedule.Web.ViewModels.ApplicationUsers;
+@model ApplicationUserViewModel[]
+
+@{
+    ViewData["Title"] = "Consultation Participants";
+}
+
+<div class="container mt-4">
+    <h2>Consultation Participants</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var participant in Model)
+            {
+                <tr>
+                    <td>@participant.Username</td>
+                    <td>@participant.Phonenumber</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

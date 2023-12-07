@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Schedule.Data.Models</id>
+    <version>1.0.0</version>
+    <authors>Schedule.Data.Models</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0">
+        <dependency id="Microsoft.AspNetCore.Identity.EntityFrameworkCore" version="6.0.6" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\ASUS\Desktop\Schedule\ScheduleMakerForSchool\SchoolShudale\Schedule.Data.Models\bin\Debug\net6.0\Schedule.Data.Models.dll" target="lib\net6.0\Schedule.Data.Models.dll" />
+  </files>
+</package>

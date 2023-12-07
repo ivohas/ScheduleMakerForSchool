@@ -1,0 +1,99 @@
+﻿@model Schedule.Web.ViewModels.Consultation.CreateConsultationViewModel
+@{
+    ViewBag.Title = "Create Consultation";
+}
+
+<h2>Create Consultation</h2>
+
+<form method="post" asp-controller="Consultation" asp-action="Create">
+    <div class="form-group">
+        <label for="Consultations">Consultations:</label>
+        @for (var i = 0; i < Model.Consultations.Count; i++)
+        {
+            <div class="consultation">
+                <div class="form-group">
+                    <label for="Consultations[@i].TeacherName">Teacher Name:</label>
+                    <input type="text" class="form-control" id="Consultations[@i].TeacherName" name="Consultations[@i].TeacherName" value="@Model.Consultations[i].TeacherName" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Consultations[@i].SubjectName">Subject Name:</label>
+                    <input type="text" class="form-control" id="Consultations[@i].SubjectName" name="Consultations[@i].SubjectName" value="@Model.Consultations[i].SubjectName" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Consultations[@i].Day">Day:</label>
+                    <input type="text" class="form-control" id="Consultations[@i].Day" name="Consultations[@i].Day" value="@Model.Consultations[i].Day" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Consultations[@i].StartHour">Start Hour:</label>
+                    <input type="text" class="form-control" id="Consultations[@i].StartHour" name="Consultations[@i].StartHour" value="@Model.Consultations[i].StartHour.ToString(@"hh\:mm")" placeholder="HH:mm" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Consultations[@i].TimeLapse">Time Lapse:</label>
+                    <input type="text" class="form-control" id="Consultations[@i].TimeLapse" name="Consultations[@i].TimeLapse" value="@Model.Consultations[i].TimeLapse" />
+                </div>
+            </div>
+        }
+    </div>
+
+    <button type="button" class="btn btn-primary" onclick="addConsultation()">Add Consultation</button>
+
+    <button type="submit" class="btn btn-primary">Create Consultation</button>
+</form>
+
+<script>
+    var consultationCount = @Model.Consultations.Count;
+
+    function addConsultation() {
+        var consultationContainer = document.querySelector('.form-group');
+        var newConsultation = document.createElement('div');
+        newConsultation.className = 'consultation';
+
+        // You can customize this part to match the structure of a single consultation
+        newConsultation.innerHTML = `
+                    <div class="form-group">
+                        <label for="Consultations[${consultationCount}].TeacherName">Teacher Name:</label>
+                        <input type="text" class="form-control" name="Consultations[${consultationCount}].TeacherName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Consultations[${consultationCount}].SubjectName">Subject Name:</label>
+                        <input type="text" class="form-control" name="Consultations[${consultationCount}].SubjectName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Consultations[${consultationCount}].Day">Day:</label>
+                        <input type="text" class="form-control" name="Consultations[${consultationCount}].Day" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StartHour">Start Hour:</label>
+                        <input type="text" class="form-control" name="Consultations[${consultationCount}].StartHour" placeholder="HH:mm" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Consultations[${consultationCount}].TimeLapse">Time Lapse:</label>
+                        <input type="text" class="form-control" name="Consultations[${consultationCount}].TimeLapse" />
+                    </div>
+
+                    <button type="button" class="btn btn-danger" onclick="deleteConsultation(this)">Delete</button>
+                    <hr>
+                `;
+
+        consultationContainer.appendChild(newConsultation);
+
+        // Set default time value
+        var startHour = document.querySelector(`input[name="Consultations[${consultationCount}].StartHour"]`);
+        startHour.value = '12:00'; // Set your default time value here
+
+        consultationCount++;
+    }
+
+    function deleteConsultation(button) {
+        var consultationContainer = button.parentNode;
+        consultationContainer.parentNode.removeChild(consultationContainer);
+    }
+</script>

@@ -1,0 +1,22 @@
+﻿@using Schedule.Data.Models;
+@model List<Consultation>
+@{
+    ViewData["Title"] = "My Consultations";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="container mt-4">
+    @foreach (var consultation in Model.OrderBy(s => Enum.Parse(typeof(DayOfWeek), s.Day)).ThenBy(x=> x.StartHour).ThenBy(x=> x.TimeLenght))
+    {
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-text">Subject: @consultation.Subject.Name</h5>
+                <p class="card-text">Teacher: @consultation.Teacher.Name</p>
+                <p class="card-text">Day: @consultation.Day</p>
+                <p class="card-text">Start Hour: @consultation.StartHour</p>             
+                <p class="card-text">Time Length: @consultation.TimeLenght</p>
+                <a class="btn btn-primary" asp-controller="Consultation" asp-action="Participate" asp-route-id="@consultation.Id">Participate</a>
+                <a class="btn btn-danger asp-controller="Consultation" asp-action="Leave" asp-route-id="@consultation.Id">Leave</a>               
+            </div>
+        </div>
+    }
+</div>

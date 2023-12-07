@@ -1,0 +1,119 @@
+﻿@model Schedule.Web.ViewModels.Schedule.TeacherViewModel
+
+@{
+    ViewBag.Title = "Teacher Form";
+}
+
+<h2>Teacher Schedule Information</h2>
+
+<form asp-controller="Create" asp-action="Teachers" method="post">
+    <table class="table table-bordered" id="teachersTable">
+        <thead>
+            <tr>
+                <th>Teacher's Name</th>
+                <th>Needed Hours</th>
+                <th>Subjects</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Teachers.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="text" asp-for="@Model.Teachers[i].Name" class="form-control" />
+                    </td>
+                    <td>
+                        <input type="text" asp-for="@Model.Teachers[i].NeededHours" class="form-control" />
+                    </td>
+                    <td>
+                        @for (var j = 0; j < Model.Teachers[i].Subjects.Count; j++)
+                        {
+                            <input type="text" asp-for="@Model.Teachers[i].Subjects[j]" class="form-control" />
+                        }
+                        <button type="button" class="btn btn-primary" onclick="addSubject(@i)">Add Subject</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning" onclick="removeTeacher(@i)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" onclick="addTeacher()">Add Teacher</button>
+    <input type="submit" value="Next" class="btn btn-success" />
+</form>
+
+@section Scripts {
+ <script>
+         function addSubject(teacherIndex) {
+             // Find the last subject input for the current teacher to determine the new index
+             var lastSubjectInput = document.querySelector('input[name^="Teachers[' + teacherIndex + '].Subjects"]:last-of-type');
+             var newSubjectIndex = lastSubjectInput ? parseInt(lastSubjectInput.name.match(/\d+/g)[1]) + 1 : 0;
+
+             // Create the new subject input
+             var newInput = document.createElement('input');
+             newInput.type = 'text';
+             newInput.name = 'Teachers[' + teacherIndex + '].Subjects[' + newSubjectIndex + ']';
+             newInput.className = 'form-control';
+             
+             // Insert the new subject input before the "Add Subject" button
+             var addButton = document.querySelector('button[data-teacher-index="' + teacherIndex + '"]');
+             addButton.parentNode.insertBefore(newInput, addButton);
+         }
+
+         function addTeacher() {
+             var table = document.getElementById("teachersTable").getElementsByTagName('tbody')[0];
+             var newRow = table.insertRow();
+             var teacherIndex = table.rows.length - 1; // Adjust for the header row
+
+             // Set the innerHTML of the new row, including the data-teacher-index attribute on the Add Subject button
+             newRow.innerHTML = `
+                     <td>
+                         <input type="text" name="Teachers[${teacherIndex}].Name" class="form-control" />
+                     </td>
+                     <td>
+                         <input type="number" name="Teachers[${teacherIndex}].NeededHours" class="form-control" />
+                     </td>
+                     <td>
+                         <button type="button" class="btn btn-primary" data-teacher-index="${teacherIndex}" onclick="addSubject(${teacherIndex})">Add Subject</button>
+                     </td>
+                     <td>
+                         <button type="button" class="btn btn-warning" onclick="deleteTeacher(this)">Remove</button>
+                     </td>
+                 `;
+         }
+
+         function deleteTeacher(button) {
+             var row = button.parentNode.parentNode;
+             row.parentNode.removeChild(row);
+             // Reindex the teacher rows after removal
+             reIndexTeachers();
+         }
+
+         function reIndexTeachers() {
+             var rows = document.getElementById("teachersTable").getElementsByTagName('tbody')[0].rows;
+             for (var i = 0; i < rows.length; i++) {
+                 var nameInput = rows[i].cells[0].querySelector('input');
+                 var hoursInput = rows[i].cells[1].querySelector('input');
+                 var subjectsButtons = rows[i].cells[2].querySelectorAll('button');
+                 var removeButton = rows[i].cells[3].querySelector('button');
+
+                 if (nameInput) {
+                     nameInput.name = 'Teachers[' + i + '].Name';
+                 }
+                 if (hoursInput) {
+                     hoursInput.name = 'Teachers[' + i + '].NeededHours';
+                 }
+                 if (subjectsButtons) {
+                     subjectsButtons.forEach(function (button, index) {
+                         button.setAttribute('onclick', 'addSubject(' + i + ')');
+                     });
+                 }
+                 if (removeButton) {
+                     removeButton.setAttribute('onclick', 'deleteTeacher(this)');
+                 }
+             }
+         }
+    </script>
+}

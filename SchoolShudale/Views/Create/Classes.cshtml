@@ -1,0 +1,89 @@
+﻿@using Schedule.Web.ViewModels.Schedule;
+@model ClassesViewModel
+
+@{
+    ViewBag.Title = "Class Form";
+    var rowCount = Model.Classes.Count;
+}
+
+<h2>Class Information</h2>
+
+<form method="post" asp-controller="Create" asp-action="Classes">
+    <table id="classTable" class="table">
+        <thead>
+            <tr>
+                <th>Class Name</th>
+                <th>Subjects</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < rowCount; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="text" name="Classes[@i].Name" value="@Model.Classes[i].Name" required />
+                    </td>
+                    <td>
+                        <div id="subjectsContainer_@i">
+                            @for (var j = 0; j < Model.Classes[i].SubjectPerWeeks.Count; j++)
+                            {
+                                <div>
+                                    <input type="text" name="Classes[@i].SubjectPerWeeks[@j].SubjectName" value="@Model.Classes[i].SubjectPerWeeks[j].SubjectName" placeholder="Subject Name" required />
+                                    <input type="number" name="Classes[@i].SubjectPerWeeks[@j].HoursPerWeek" value="@Model.Classes[i].SubjectPerWeeks[j].HoursPerWeek" placeholder="Hours per Week" required />
+                                    <button type="button" class="btn btn-danger" onclick="removeSubject(@i, @j)">Remove Subject</button>
+                                </div>
+                            }
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addSubject(@i)">Add Subject</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="removeRow(@i)">Remove Class</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" onclick="addRow()">Add Class</button>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+<script>
+    var rowCount = @rowCount; // Pass rowCount to JavaScript
+
+    function addRow() {
+        var table = document.getElementById("classTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+
+        cell1.innerHTML = '<input type="text" name="Classes[' + rowCount + '].Name" required />';
+        cell2.innerHTML = '<div id="subjectsContainer_' + rowCount + '"></div><button type="button" class="btn btn-primary" onclick="addSubject(' + rowCount + ')">Add Subject</button>';
+        cell3.innerHTML = '<button type="button" class="btn btn-danger" onclick="removeRow(' + rowCount + ')">Remove Class</button>';
+
+        rowCount++;
+    }
+
+    function removeRow(rowIndex) {
+        var row = document.getElementById("classTable").getElementsByTagName('tbody')[0].getElementsByTagName('tr')[rowIndex];
+        row.parentNode.removeChild(row);
+    }
+
+    function addSubject(classIndex) {
+        var subjectsContainer = document.getElementById("subjectsContainer_" + classIndex);
+        var newSubjectDiv = document.createElement('div');
+        var subjectIndex = subjectsContainer.childElementCount;
+        newSubjectDiv.innerHTML = '<input type="text" name="Classes[' + classIndex + '].SubjectPerWeeks[' + subjectIndex + '].SubjectName" placeholder="Subject Name" required />' +
+            '<input type="number" name="Classes[' + classIndex + '].SubjectPerWeeks[' + subjectIndex + '].HoursPerWeek" placeholder="Hours per Week" required />' +
+            '<button type="button" class="btn btn-danger" onclick="removeSubject(' + classIndex + ',' + subjectIndex + ')">Remove Subject</button>';
+        subjectsContainer.appendChild(newSubjectDiv);
+    }
+
+    function removeSubject(classIndex, subjectIndex) {
+        var subjectsContainer = document.getElementById("subjectsContainer_" + classIndex);
+        var subjectDiv = subjectsContainer.children[subjectIndex];
+        subjectDiv.parentNode.removeChild(subjectDiv);
+    }
+</script>

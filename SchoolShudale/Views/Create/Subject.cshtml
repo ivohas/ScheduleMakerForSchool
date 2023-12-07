@@ -1,0 +1,56 @@
+﻿@using Schedule.Web.ViewModels.Schedule;
+@model SubjectViewModel
+@{
+    ViewBag.Title = "Subject Form";
+}
+
+<h2>Subject Information</h2>
+
+<form method="post" asp-controller="Create" asp-action="Subject">
+    <table id="subjectTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Subject Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (var i = 0; i < Model.Names.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input type="text" name="Names[@i]" value="@Model.Names[i]" class="form-control" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="button" class="btn btn-primary" onclick="addRow()">Add Subject</button>
+
+    <input type="submit" class="btn btn-success" value="Submit" />
+</form>
+
+<script>
+    var rowCount = @Model.Names.Count;
+
+    function addRow() {
+        var table = document.getElementById("subjectTable").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+
+        cell1.innerHTML = '<input type="text" name="Names[' + rowCount + ']" class="form-control" />';
+        cell2.innerHTML = '<button type="button" class="btn btn-danger" onclick="deleteRow(this)">Delete</button>';
+
+        rowCount++;
+    }
+
+    function deleteRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    }
+</script>

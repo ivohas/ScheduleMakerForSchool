@@ -1,0 +1,28 @@
+﻿@using Schedule.Data.Models;
+@model Dictionary<string, List<Consultation>>
+
+<h2>Consultation Schedule</h2>
+
+@foreach (var day in Model.Keys)
+{
+    <div class="accordion-item mb-4">
+        <h3 class="mb-3">@day</h3>
+
+        @foreach (var consultation in Model[day].OrderByDescending(x=> x.StartHour))
+        {
+            <div class="card border-2 mb-3">
+                <div class="card-body">
+                    <!-- Problem with subject name and if there is more than one consultation per day-->
+                    <h5>Teacher: @consultation.Teacher.Name</h5>
+                    <h5>Subject: @consultation.Subject</h5>
+                    <h5 class="card-title">Start Hour: @consultation.StartHour</h5>
+                    <p class="card-text">Duration: @consultation.TimeLenght</p>
+
+                    <!-- Check if you already participate-->
+                    <a class="btn btn-success" asp-controller="Consultation" asp-action="Participate" asp-route-id="@consultation.Id">Participate</a>
+                    <a class="btn btn-primary" asp-controller="Consultation" asp-action="Details" asp-route-id="@consultation.Id">Details</a>                    
+                </div>
+            </div>
+        }
+    </div>
+}
