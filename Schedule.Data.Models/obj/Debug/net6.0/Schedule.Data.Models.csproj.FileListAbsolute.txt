@@ -22,3 +22,15 @@ C:\Users\ASUS\Desktop\Schedule\ScheduleMakerForSchool\SchoolShudale\Schedule.Dat
 C:\Users\ASUS\Desktop\Schedule\ScheduleMakerForSchool\SchoolShudale\Schedule.Data.Models\obj\Debug\net6.0\refint\Schedule.Data.Models.dll
 C:\Users\ASUS\Desktop\Schedule\ScheduleMakerForSchool\SchoolShudale\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.pdb
 C:\Users\ASUS\Desktop\Schedule\ScheduleMakerForSchool\SchoolShudale\Schedule.Data.Models\obj\Debug\net6.0\ref\Schedule.Data.Models.dll
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\bin\Debug\net6.0\Schedule.Data.Models.deps.json
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\bin\Debug\net6.0\Schedule.Data.Models.dll
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\bin\Debug\net6.0\Schedule.Data.Models.pdb
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.AssemblyInfoInputs.cache
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.dll
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\refint\Schedule.Data.Models.dll
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\Schedule.Data.Models.pdb
+C:\Users\ASUS\Desktop\ScheduleMakerForSchool\Schedule.Data.Models\obj\Debug\net6.0\ref\Schedule.Data.Models.dll

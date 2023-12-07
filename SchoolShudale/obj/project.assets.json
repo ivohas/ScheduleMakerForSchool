@@ -11213,11 +11213,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\SchoolShudale\\SchoolShudale.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\SchoolShudale.csproj",
       "projectName": "SchoolShudale",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\SchoolShudale\\SchoolShudale.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\SchoolShudale.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\SchoolShudale\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11238,23 +11238,23 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Common\\Schedule.Common.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Common\\Schedule.Common.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Common\\Schedule.Common.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Common\\Schedule.Common.csproj"
             },
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj"
             },
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data\\Schedule.Data.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data\\Schedule.Data.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data\\Schedule.Data.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data\\Schedule.Data.csproj"
             },
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Services.Data\\Schedule.Services.Data.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Services.Data\\Schedule.Services.Data.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Services.Data\\Schedule.Services.Data.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Services.Data\\Schedule.Services.Data.csproj"
             },
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.ViewModels\\Schedule.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.ViewModels\\Schedule.ViewModels.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.ViewModels\\Schedule.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.ViewModels\\Schedule.ViewModels.csproj"
             },
-            "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Web.ViewModels\\Schedule.Web.ViewModels.csproj": {
-              "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Web.ViewModels\\Schedule.Web.ViewModels.csproj"
+            "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Web.ViewModels\\Schedule.Web.ViewModels.csproj": {
+              "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Web.ViewModels\\Schedule.Web.ViewModels.csproj"
             }
           }
         }

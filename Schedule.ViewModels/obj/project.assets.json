@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.ViewModels\\Schedule.ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.ViewModels\\Schedule.ViewModels.csproj",
       "projectName": "Schedule.ViewModels",
-      "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.ViewModels\\Schedule.ViewModels.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.ViewModels\\Schedule.ViewModels.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.ViewModels\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

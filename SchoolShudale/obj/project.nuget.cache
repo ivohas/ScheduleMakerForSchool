@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WmafJeAZuFGE8rewEyL25Z0wy2oOdKkU4MEmTXTYql4E2VIs+2LsMn3qF/Fvybj9NTz3HN9yspVcjGojbG01bQ==",
+  "dgSpecHash": "nptqugWlD/4xSjAAHyGTmOVE6kmghs0pkAc6aUGe775IrF4O9g0EOKKznsv72MT48O4tlUYPS8DGZ7saqO6HLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\SchoolShudale\\SchoolShudale.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\SchoolShudale.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

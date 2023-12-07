@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
         "projectName": "Schedule.Data.Models",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

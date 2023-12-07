@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xZnvT77+kpUjv7LL6pLOhX5f8ExCSNZXwvh8aC7B2c9STj6WXTb0tFHNCvKXrgYxygUWAWy03QIVJwf14ZlfvQ==",
+  "dgSpecHash": "ihwhxcGCK47lFd88VilMK1FG52TZ+CT8pamsY33O6+c7eLkg15GsBPENWDJ+MaYNmi5CJ1KYrkEkkir2PKLGSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\Project-Schedule\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\Schedule.Data.Models\\Schedule.Data.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.6\\microsoft.aspnetcore.cryptography.internal.6.0.6.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.6\\microsoft.aspnetcore.cryptography.keyderivation.6.0.6.nupkg.sha512",
