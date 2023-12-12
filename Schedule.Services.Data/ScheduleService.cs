@@ -35,9 +35,44 @@ namespace Schedule.Services.Data
             await _dbContext.SaveChangesAsync();
         }
 
+        public async Task<ClassesViewModel> GetAllClassesAsync()
+        {
+            ClassesViewModel classesViewModel = new ClassesViewModel();
+            classesViewModel.Classes = await _dbContext
+                .Classes
+                .Select(x => new ClassesDetailsViewModel
+                {
+                    Name = x.Name,
+                    SubjectPerWeeks = x.SubjectsPerWeeks
+                    .Select(y => new SubjectPerWeekViewModel
+                    {
+                        HoursPerWeek = y.HourSPerWeek,
+                        SubjectName = y.SubjectName
+                    }).ToList()
+                })
+                .ToListAsync();
+            return classesViewModel;
+        }
+
         public async Task<ICollection<string>> GetAllSubjectsAsync()
         {
             return await _dbContext.Subjects.Select(x => x.Name).ToListAsync();
+        }
+
+        public async Task<TeacherViewModel> GetAllTeachersAsync()
+        {
+            TeacherViewModel teachersViewModel = new TeacherViewModel();
+            teachersViewModel.Teachers = await this._dbContext
+                .Teachers
+                .Include(x => x.Subjects)
+                .Select(x => new TeacherDetailsViewModel
+                {
+                    Name = x.Name,
+                    NeededHours = x.NeededHours,
+                    Subjects = x.Subjects.Select(x => x.Name).ToList()
+                })
+                .ToListAsync();
+            return teachersViewModel;
         }
 
         public async Task RecordClassesInDbAsync(ClassesViewModel classModel)

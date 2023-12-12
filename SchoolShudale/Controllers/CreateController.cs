@@ -61,8 +61,11 @@ namespace SchoolShudale.Controllers
         }
 
         [HttpGet]
-        public IActionResult TeacherAssignment()
+        public async Task<IActionResult> TeacherAssignment()
         {
+
+            TeacherViewModel teachers = await this._scheduleService.GetAllTeachersAsync();
+            ClassesViewModel classes = await this._scheduleService.GetAllClassesAsync();
             return View();
         }
     }
