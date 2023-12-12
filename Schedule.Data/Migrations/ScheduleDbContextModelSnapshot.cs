@@ -314,10 +314,10 @@ namespace Schedule.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClassId")
+                    b.Property<Guid>("ClassId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("HourSPerWeek")
+                    b.Property<int>("HoursPerWeek")
                         .HasColumnType("int");
 
                     b.Property<string>("SubjectName")
@@ -341,7 +341,7 @@ namespace Schedule.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NeededHours")
+                    b.Property<int>("NeededHours")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -473,9 +473,13 @@ namespace Schedule.Data.Migrations
 
             modelBuilder.Entity("Schedule.Data.Models.SubjectsPerWeek", b =>
                 {
-                    b.HasOne("Schedule.Data.Models.Class", null)
+                    b.HasOne("Schedule.Data.Models.Class", "Class")
                         .WithMany("SubjectsPerWeeks")
-                        .HasForeignKey("ClassId");
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
                 });
 
             modelBuilder.Entity("Schedule.Data.Models.UserConsultation", b =>

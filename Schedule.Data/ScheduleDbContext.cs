@@ -30,7 +30,12 @@ namespace Schedule.Data
                 .HasKey(l => new { l.LoginProvider, l.ProviderKey });
 
             modelBuilder.Entity<UserConsultation>()
-                .HasKey(uc => new {uc.ApplicationUserID, uc.ConsultationID });
+                .HasKey(uc => new { uc.ApplicationUserID, uc.ConsultationID });
+            modelBuilder.Entity<Class>()
+          .HasMany(c => c.SubjectsPerWeeks)
+          .WithOne(spw => spw.Class)
+          .HasForeignKey(spw => spw.ClassId)
+          .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

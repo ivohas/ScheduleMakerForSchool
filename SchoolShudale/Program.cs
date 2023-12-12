@@ -38,6 +38,7 @@ namespace SchoolShudale
 
             builder.Services.AddScoped<IScheduleService, ScheduleService>();
             builder.Services.AddScoped<IConsultaionService, ConsultaionService>();
+            builder.Services.AddScoped<ITeacherAssignmentService, TeacherAssignmentService>();
 
             builder.Services.AddControllersWithViews()
                  .AddMvcOptions(options =>

@@ -12,6 +12,6 @@
         public string Name { get; set; }
         public ICollection<Subject> Subjects { get; set; }
         public ICollection<Class> Classes { get; set; }
-        public int? NeededHours { get; set; }
+        public int NeededHours { get; set; }
     }
 }

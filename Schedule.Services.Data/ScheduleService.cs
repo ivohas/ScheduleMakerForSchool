@@ -46,7 +46,7 @@ namespace Schedule.Services.Data
                     SubjectPerWeeks = x.SubjectsPerWeeks
                     .Select(y => new SubjectPerWeekViewModel
                     {
-                        HoursPerWeek = y.HourSPerWeek,
+                        HoursPerWeek = y.HoursPerWeek,
                         SubjectName = y.SubjectName
                     }).ToList()
                 })
@@ -68,8 +68,10 @@ namespace Schedule.Services.Data
                 .Select(x => new TeacherDetailsViewModel
                 {
                     Name = x.Name,
-                    NeededHours = x.NeededHours,
-                    Subjects = x.Subjects.Select(x => x.Name).ToList()
+                    NeededHours = x.NeededHours,  // May caouse the error                  
+                    Subjects = x.Subjects.Select(x => x.Name).ToList(),
+                    AssignedHours = 0,
+                    AssignedClasses = new List<(string ClassName, string Subject)>()
                 })
                 .ToListAsync();
             return teachersViewModel;
@@ -85,7 +87,7 @@ namespace Schedule.Services.Data
                     Name = x.Name,
                     SubjectsPerWeeks = x.SubjectPerWeeks.Select(x => new SubjectsPerWeek
                     {
-                        HourSPerWeek = int.Parse(x.HoursPerWeek.ToString()),
+                        HoursPerWeek = int.Parse(x.HoursPerWeek.ToString()),
                         SubjectName = x.SubjectName,
                     }).ToList()
 

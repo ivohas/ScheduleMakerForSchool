@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Schedule.Data.Models
 {
@@ -11,6 +12,9 @@ namespace Schedule.Data.Models
         [Key]
         public Guid Id { get; set; }
         public string SubjectName { get; set; } = null!;
-        public int HourSPerWeek { get; set; }
+        public int HoursPerWeek { get; set; }
+        public Guid ClassId { get; set; }
+        [ForeignKey(nameof(ClassId))] // Foreign key property
+        public Class Class { get; set; }
     }
 }

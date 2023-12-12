@@ -8,10 +8,13 @@ namespace SchoolShudale.Controllers
     public class CreateController : BaseController
     {
         private readonly IScheduleService _scheduleService;
-        public CreateController(IScheduleService scheduleService)
+        private readonly ITeacherAssignmentService _teacherAssignmentService;
+        public CreateController(IScheduleService scheduleService, ITeacherAssignmentService teacherAssignmentService)
         {
             _scheduleService = scheduleService;
+            _teacherAssignmentService = teacherAssignmentService;
         }
+
         // May delete in future
         [HttpGet]
         public IActionResult Subject()
@@ -56,7 +59,7 @@ namespace SchoolShudale.Controllers
         {
             await _scheduleService.ClearAllClassesInTheDb();
             await _scheduleService.RecordClassesInDbAsync(classModel);
-            return RedirectToAction("Index", "TeacherAssignment");
+            return RedirectToAction(nameof(TeacherAssignment));
 
         }
 
@@ -66,6 +69,8 @@ namespace SchoolShudale.Controllers
 
             TeacherViewModel teachers = await this._scheduleService.GetAllTeachersAsync();
             ClassesViewModel classes = await this._scheduleService.GetAllClassesAsync();
+
+            string result = await this._teacherAssignmentService.GiveATeacherClasses(classes, teachers);
             return View();
         }
     }
