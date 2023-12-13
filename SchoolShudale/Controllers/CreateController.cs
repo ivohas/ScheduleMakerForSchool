@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Services.Data.Interfaces;
 using Schedule.Web.ViewModels.Schedule;
+using Schedule.Web.ViewModels.TeacherAssignment;
 
 namespace SchoolShudale.Controllers
 {
@@ -69,9 +70,9 @@ namespace SchoolShudale.Controllers
 
             TeacherViewModel teachers = await this._scheduleService.GetAllTeachersAsync();
             ClassesViewModel classes = await this._scheduleService.GetAllClassesAsync();
-
-            string result = await this._teacherAssignmentService.GiveATeacherClasses(classes, teachers);
-            return View();
+                      
+            TeacherAssignmentViewModel teacherAssignments = await this._teacherAssignmentService.GiveATeacherClassesAsync(classes, teachers);
+            return View(teacherAssignments);
         }
     }
 }

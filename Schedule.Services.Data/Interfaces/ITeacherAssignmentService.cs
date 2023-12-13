@@ -1,9 +1,10 @@
 ﻿using Schedule.Web.ViewModels.Schedule;
+using Schedule.Web.ViewModels.TeacherAssignment;
 
 namespace Schedule.Services.Data.Interfaces
 {
     public interface ITeacherAssignmentService
     {
-        Task<string> GiveATeacherClasses(ClassesViewModel classes, TeacherViewModel teachers);
+        Task<TeacherAssignmentViewModel> GiveATeacherClassesAsync(ClassesViewModel classes, TeacherViewModel teachers);
     }
 }

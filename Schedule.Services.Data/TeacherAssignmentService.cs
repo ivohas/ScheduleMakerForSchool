@@ -2,6 +2,8 @@
 using Schedule.Data.Models;
 using Schedule.Services.Data.Interfaces;
 using Schedule.Web.ViewModels.Schedule;
+using Schedule.Web.ViewModels.TeacherAssignment;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Schedule.Services.Data
@@ -14,14 +16,9 @@ namespace Schedule.Services.Data
         {
             this._dbContext = dbContext;
         }
-
-        public Task<string> GiveATeacherClasses(ClassesViewModel classes, TeacherViewModel teachers)
+     
+        public static void AssignTeachers(ClassesViewModel classes, TeacherViewModel teachers)
         {
-           
-            AssignTeachers(classes, teachers);
-            return Task.FromResult(PrintTeacherAssignments(teachers.Teachers));
-        }
-        public static void AssignTeachers(ClassesViewModel classes, TeacherViewModel teachers) { 
             foreach (var schoolClass in classes.Classes)
             {
                 foreach (var subject in schoolClass.SubjectPerWeeks)
@@ -73,24 +70,6 @@ namespace Schedule.Services.Data
                          .ToList();
         }
 
-        private static TeacherDetailsViewModel AssignClassToTeacher(ClassesDetailsViewModel schoolClass, List<TeacherDetailsViewModel> eligibleTeachers, string subject)
-        {
-            foreach (var teacher in eligibleTeachers)
-            {
-                if (!teacher.AssignedClasses.Any(ac => ac.ClassName == schoolClass.Name && ac.Subject == subject))
-                {
-                    return teacher;
-                }
-            }
-
-            return null;
-        }
-
-        private static IEnumerable<string> GetAllSubjects(List<ClassesDetailsViewModel> classes)
-        {
-            return classes.SelectMany(c => c.SubjectPerWeeks.Select(x=> x.SubjectName)).Distinct();
-        }
-
         private static bool AllTeachersMetMinimum(List<TeacherDetailsViewModel> teachers)
         {
             return teachers.All(t => t.AssignedHours >= t.NeededHours);
@@ -100,21 +79,21 @@ namespace Schedule.Services.Data
         {
             return teachers.Sum(t => t.NeededHours - t.AssignedHours);
         }
-        public static string PrintTeacherAssignments(List<TeacherDetailsViewModel> teachers)
+        public static TeacherAssignmentViewModel PrintTeacherAssignments(List<TeacherDetailsViewModel> teachers)
         {
-            StringBuilder sb = new StringBuilder();
+            TeacherAssignmentViewModel teacherAssignments = new TeacherAssignmentViewModel();
+            
             foreach (var teacher in teachers)
             {
-                sb.AppendLine($"{teacher.Name}: {string.Join(", ", teacher.AssignedClasses.Select(ac => $"{ac.Subject} ({ac.ClassName})"))} ({string.Join(", ", teacher.Subjects)})");
+               teacherAssignments.teacherAssignments[teacher.Name]= teacher.AssignedClasses.Select(ac => $"{ac.Subject} ({ac.ClassName})").ToList();
             }
-
-            sb.AppendLine("\nSummary:");
-            foreach (var teacher in teachers)
-            {
-                sb.AppendLine($"{teacher.Name}: Minimum Hours: {teacher.NeededHours}, Assigned Hours: {teacher.AssignedHours}");
-            }
-            return sb.ToString();
+            return teacherAssignments;
         }
-      
+
+        public Task<TeacherAssignmentViewModel> GiveATeacherClassesAsync(ClassesViewModel classes, TeacherViewModel teachers)
+        {
+            AssignTeachers(classes, teachers);
+            return Task.FromResult(PrintTeacherAssignments(teachers.Teachers));
+        }
     }
 }

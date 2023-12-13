@@ -1,7 +1,12 @@
-﻿@{
+﻿@using Schedule.Web.ViewModels.TeacherAssignment
+@model TeacherAssignmentViewModel
+
+@{
     ViewData["Title"] = "Teacher and Classes";
 }
+
 <h1>@ViewData["Title"]</h1>
+
 <style>
     table {
         font-family: arial, sans-serif;
@@ -20,97 +25,76 @@
         background-color: #dddddd;
     }
 
-    .sortable-row {
-        cursor: move;
+    .sortable tr:hover {
+        background-color: aqua;
+        color: #fff;
     }
 
-        .sortable-row:hover {
-            background-color: aqua;
-            color: #fff;
-        }
+    .sortable-row-hover {
+        background-color: aqua;
+        color: #fff;
+    }
 </style>
 
-<div class="table-responsive">
-    <table class="table" id="table-1" cellspacing="0" cellpadding="2">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Number</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr id="1" class="sortable-row" draggable="true">
-                <td>1</td>
-                <td>One</td>
-                <td>some text</td>
-            </tr>
-            <tr id="2" class="sortable-row" draggable="true">
-                <td>2</td>
-                <td>Two</td>
-                <td>some text</td>
-            </tr>
-            <!-- ... other rows ... -->
-        </tbody>
-    </table>
-</div>
-
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const tableBody = document.getElementById('table-1').querySelector('tbody');
+    function allowDrop(event) {
+        event.preventDefault();
+    }
 
-        let dragSrcElement = null;
+    function drag(event) {
+        var draggedRow = event.target.closest('tr');
+        // Clone the dragged row
+        var clone = draggedRow.cloneNode(true);
+        clone.classList.add('dragged');
+        event.dataTransfer.setData("text", clone.outerHTML);
+    }
 
-        function handleDragStart(e) {
-            dragSrcElement = this;
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this.innerHTML);
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("text");
+        var table = event.target.closest('table');
+        var tbody = table.querySelector('tbody');
+
+        if (data && tbody) {
+            tbody.insertAdjacentHTML('beforeend', data);
+            // Remove the original row from the source table
+            var originalTable = document.querySelector('.dragged').closest('table');
+            originalTable.removeChild(originalTable.querySelector('.dragged'));
         }
+    }
 
-        function handleDragOver(e) {
-            if (e.preventDefault) {
-                e.preventDefault();
-            }
-            e.dataTransfer.dropEffect = 'move';
-            return false;
-        }
+    function dragEnter(event) {
+        event.target.closest('tr').classList.add('sortable-row-hover');
+    }
 
-        function handleDragEnter() {
-            this.classList.add('sortable-row-hover');
-        }
+    function dragLeave(event) {
+        event.target.closest('tr').classList.remove('sortable-row-hover');
+    }
 
-        function handleDragLeave() {
-            this.classList.remove('sortable-row-hover');
-        }
-
-        function handleDrop(e) {
-            if (e.stopPropagation) {
-                e.stopPropagation(); // stops the browser from redirecting.
-            }
-
-            if (dragSrcElement !== this) {
-                dragSrcElement.innerHTML = this.innerHTML;
-                this.innerHTML = e.dataTransfer.getData('text/html');
-            }
-
-            return false;
-        }
-
-        function handleDragEnd() {
-            tableBody.querySelectorAll('.sortable-row').forEach(function (row) {
-                row.classList.remove('sortable-row-hover');
-            });
-        }
-
-        tableBody.querySelectorAll('.sortable-row').forEach(function (row) {
-            row.addEventListener('dragstart', handleDragStart, false);
-            row.addEventListener('dragenter', handleDragEnter, false);
-            row.addEventListener('dragover', handleDragOver, false);
-            row.addEventListener('dragleave', handleDragLeave, false);
-            row.addEventListener('drop', handleDrop, false);
-            row.addEventListener('dragend', handleDragEnd, false);
-        });
-    });
+    function dragEnd(event) {
+        event.target.closest('tr').classList.remove('sortable-row-hover');
+    }
 </script>
 
-
+@foreach (var teacher in Model.teacherAssignments)
+{
+    <div class="table-responsive">
+        <table class="table sortable" id="@($"table-{teacher.Key}")" cellspacing="0" cellpadding="2" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <thead>
+                <tr>
+                    <th>@teacher.Key</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < teacher.Value.Count; i++)
+                {
+                    <tr draggable="true" ondragstart="drag(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragend="dragEnd(event)">
+                        <td>
+                            <div class="dragitem">@teacher.Value[i]</div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
