@@ -72,6 +72,7 @@ namespace SchoolShudale.Controllers
             ClassesViewModel classes = await this._scheduleService.GetAllClassesAsync();
                       
             TeacherAssignmentViewModel teacherAssignments = await this._teacherAssignmentService.GiveATeacherClassesAsync(classes, teachers);
+            // View is clonig rows and not deletin the original 
             return View(teacherAssignments);
         }
     }

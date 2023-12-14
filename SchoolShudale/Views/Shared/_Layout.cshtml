@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolShudale</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SchoolSchedule</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,31 +21,46 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
+                        </li>                      
+                        @if (this.User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item dropdown">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle text-dark" type="button" data-bs-toggle="dropdown">Create</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Create">Consultation Schedule</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Create" asp-action="Teachers">Schedule</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <div class="dropdown">
+                                    <button class="btn dropdown-toggle text-dark" type="button" data-bs-toggle="dropdown">Consultation</button>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Schedule">Schedule</a>
+                                        </li>
+
+
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Mine">My Consultation</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                     
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Mine" asp-action="Schedule">My Schedule</a>
+                            </li>                                                  
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @if (this.User.Identity?.IsAuthenticated ?? false)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Create" asp-action="Teachers">Create Schedule</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Schedule">Consultation Schedule</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Create">Create a Consultation</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Schedule">Consultations</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Mine" asp-action="Schedule">My Schedule</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Consultation" asp-action="Mine">My Consultation</a>
-                            </li>
-                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
