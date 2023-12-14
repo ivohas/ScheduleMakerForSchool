@@ -37,49 +37,69 @@
 </style>
 
 <script>
-    function allowDrop(event) {
-        event.preventDefault();
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var draggedItem = null;
 
-    function drag(event) {
-        var draggedRow = event.target.closest('tr');
-        // Clone the dragged row
-        var clone = draggedRow.cloneNode(true);
-        clone.classList.add('dragged');
-        event.dataTransfer.setData("text", clone.outerHTML);
-    }
-
-    function drop(event) {
-        event.preventDefault();
-        var data = event.dataTransfer.getData("text");
-        var table = event.target.closest('table');
-        var tbody = table.querySelector('tbody');
-
-        if (data && tbody) {
-            tbody.insertAdjacentHTML('beforeend', data);
-            // Remove the original row from the source table
-            var originalTable = document.querySelector('.dragged').closest('table');
-            originalTable.removeChild(originalTable.querySelector('.dragged'));
+        function allowDrop(event) {
+            event.preventDefault();
         }
-    }
 
-    function dragEnter(event) {
-        event.target.closest('tr').classList.add('sortable-row-hover');
-    }
+        function dragStart(event) {
+            draggedItem = event.target.closest('tr');
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/html', draggedItem.outerHTML);
+        }
 
-    function dragLeave(event) {
-        event.target.closest('tr').classList.remove('sortable-row-hover');
-    }
+        function drop(event) {
+            event.preventDefault();
+            var targetTable = event.target.closest('table');
+            var tbody = targetTable.querySelector('tbody');
+            var data = event.dataTransfer.getData('text/html');
 
-    function dragEnd(event) {
-        event.target.closest('tr').classList.remove('sortable-row-hover');
-    }
+            if (targetTable && tbody && data) {
+                // Append the cloned row to the target table
+                tbody.insertAdjacentHTML('beforeend', data);
+
+                // Remove the original row from the source table
+                var sourceTable = draggedItem.closest('table');
+                sourceTable.querySelector('tbody').removeChild(draggedItem);
+            }
+
+            draggedItem = null;
+        }
+
+        function dragEnter(event) {
+            event.target.closest('tr').classList.add('sortable-row-hover');
+        }
+
+        function dragLeave(event) {
+            event.target.closest('tr').classList.remove('sortable-row-hover');
+        }
+
+        function dragEnd(event) {
+            event.target.closest('tr').classList.remove('sortable-row-hover');
+        }
+
+        var tables = document.querySelectorAll('.sortable');
+        tables.forEach(function (table) {
+            table.addEventListener('dragover', allowDrop);
+            table.addEventListener('drop', drop);
+        });
+
+        var rows = document.querySelectorAll('.sortable tr');
+        rows.forEach(function (row) {
+            row.addEventListener('dragstart', dragStart);
+            row.addEventListener('dragenter', dragEnter);
+            row.addEventListener('dragleave', dragLeave);
+            row.addEventListener('dragend', dragEnd);
+        });
+    });
 </script>
 
 @foreach (var teacher in Model.teacherAssignments)
 {
     <div class="table-responsive">
-        <table class="table sortable" id="@($"table-{teacher.Key}")" cellspacing="0" cellpadding="2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <table class="table sortable" id="@($"table-{teacher.Key}")" cellspacing="0" cellpadding="2">
             <thead>
                 <tr>
                     <th>@teacher.Key</th>
@@ -88,7 +108,7 @@
             <tbody>
                 @for (var i = 0; i < teacher.Value.Count; i++)
                 {
-                    <tr draggable="true" ondragstart="drag(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" ondragend="dragEnd(event)">
+                    <tr draggable="true">
                         <td>
                             <div class="dragitem">@teacher.Value[i]</div>
                         </td>
