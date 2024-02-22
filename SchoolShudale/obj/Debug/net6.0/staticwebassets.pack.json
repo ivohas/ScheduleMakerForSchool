@@ -5,8 +5,24 @@
       "PackagePath": "staticwebassets\\SchoolShudale.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\_sidebar.scss",
+      "PackagePath": "staticwebassets\\css\\_sidebar.scss"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\styles.min.css",
+      "PackagePath": "staticwebassets\\css\\styles.min.css"
     },
     {
       "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\favicon.ico",
