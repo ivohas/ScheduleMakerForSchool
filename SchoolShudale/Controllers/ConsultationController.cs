@@ -69,6 +69,7 @@ namespace SchoolShudale.Controllers
         }
         // Only for the teachers to see the particicpants
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Details(Guid Id) 
         {
             ApplicationUserViewModel[] usersInConsultation = await this._consultaionService.GetAllParticipantceForAConsultationByIdAsync(Id);
