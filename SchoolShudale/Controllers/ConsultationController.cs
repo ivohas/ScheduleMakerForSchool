@@ -44,11 +44,14 @@ namespace SchoolShudale.Controllers
         [HttpGet]
         public async Task<IActionResult> Participate(Guid Id)
         {
-            // Get the book with a method to the 
-            // Create Mine books
-
             Consultation consultation = await this._consultaionService.GetConsultationByIdAsync(Id);
             // Importanted Dublicate check 
+            var consultations = await this._consultaionService.GetAllMyConsultationsAsync(this.GetUserId());
+            var checkForDoblication = consultations.FirstOrDefault(x => x.Id == consultation.Id);
+            if (checkForDoblication != null)
+            {
+                return RedirectToAction(nameof(Schedule));
+            }
             await this._consultaionService.AddConsultataionToTheUser(consultation, this.GetUserId());
             return RedirectToAction(nameof(Mine));
 
