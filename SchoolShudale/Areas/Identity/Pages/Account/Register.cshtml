@@ -5,7 +5,19 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="row offset-1">
+<style>
+    .form-control {
+        background-color: white;
+        color: black; /* Set default text color */
+    }
+
+        /* Change text color on hover */
+        .form-control:hover {
+            color: white; /* Change text color to red on hover */
+        }
+</style>
+
+<div class="row justify-content-center">
     <h1>@ViewData["Title"]</h1>
     <div class="col-md-4 ">
         <form id="registerForm" method="post">
