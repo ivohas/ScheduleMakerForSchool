@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
+      "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\footer.css",
+      "PackagePath": "staticwebassets\\css\\footer.css"
+    },
+    {
       "Id": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

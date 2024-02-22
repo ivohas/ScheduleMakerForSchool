@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h2G9sBr/51polInbdsKShov0ngpDMf+fpE0wsEn7dlk=",
+  "Hash": "5lpoS8Cyna8SoA1JgCuYzduj1Z5W6uhmJBglEQ5trNg=",
   "Source": "SchoolShudale",
   "BasePath": "_content/SchoolShudale",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\footer.css",
+      "SourceId": "SchoolShudale",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\",
+      "BasePath": "_content/SchoolShudale",
+      "RelativePath": "css/footer.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\footer.css"
     },
     {
       "Identity": "C:\\Users\\ASUS\\Desktop\\ScheduleMakerForSchool\\SchoolShudale\\wwwroot\\css\\site.css",
