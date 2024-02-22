@@ -1,3 +1,7 @@
 .footer[b-e4imq7wty0] {
-    position: static;
+    position: relative;
+}
+
+* {
+color: black;
 }
