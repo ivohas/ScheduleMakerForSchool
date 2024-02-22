@@ -20,7 +20,11 @@
 
                     <!-- Check if you already participate-->
                     <a class="btn btn-success" asp-controller="Consultation" asp-action="Participate" asp-route-id="@consultation.Id">Participate</a>
-                    <a class="btn btn-primary" asp-controller="Consultation" asp-action="Details" asp-route-id="@consultation.Id">Details</a>                    
+                    @if (User.IsInRole("Teacher"))
+                    {
+                        <a class="btn btn-primary" asp-controller="Consultation" asp-action="Details" asp-route-id="@consultation.Id">Details</a> 
+                    }
+                                       
                 </div>
             </div>
         }

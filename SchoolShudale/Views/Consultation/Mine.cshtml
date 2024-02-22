@@ -14,7 +14,6 @@
                 <p class="card-text">Day: @consultation.Day</p>
                 <p class="card-text">Start Hour: @consultation.StartHour</p>             
                 <p class="card-text">Time Length: @consultation.TimeLenght</p>
-                <a class="btn btn-primary" asp-controller="Consultation" asp-action="Participate" asp-route-id="@consultation.Id">Participate</a>
                 <a class="btn btn-danger asp-controller="Consultation" asp-action="Leave" asp-route-id="@consultation.Id">Leave</a>               
             </div>
         </div>
