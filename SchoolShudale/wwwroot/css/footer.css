@@ -1,7 +1,19 @@
-.footer[b-e4imq7wty0] {
-    position: relative;
+* {
+    color: black;
 }
 
-* {
-color: black;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    min-height: 80vh;
+}
+
+.footer[b-e4imq7wty0] {
+    position: relative; 
+    width: 100%;
 }
