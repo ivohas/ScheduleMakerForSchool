@@ -1,4 +1,5 @@
 ﻿using Library.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Schedule.Services.Data.Interfaces;
 using Schedule.Web.ViewModels.Schedule;
@@ -18,6 +19,7 @@ namespace SchoolShudale.Controllers
 
         // May delete in future
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Subject()
         {
             var viewModel = new SubjectViewModel();
@@ -33,8 +35,9 @@ namespace SchoolShudale.Controllers
         }
         // Add delete row button for the subjects
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> Teachers()
-        {    
+        {
             var viewModel = new TeacherViewModel();
             return View(viewModel);
 
@@ -49,6 +52,7 @@ namespace SchoolShudale.Controllers
             return RedirectToAction(nameof(Classes));
         }
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Classes()
         {
             var classModel = new ClassesViewModel();
@@ -65,13 +69,14 @@ namespace SchoolShudale.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> TeacherAssignment()
         {
 
             TeacherViewModel teachers = await this._scheduleService.GetAllTeachersAsync();
             ClassesViewModel classes = await this._scheduleService.GetAllClassesAsync();
-                      
-            TeacherAssignmentViewModel teacherAssignments = await this._teacherAssignmentService.GiveATeacherClassesAsync(classes, teachers);           
+
+            TeacherAssignmentViewModel teacherAssignments = await this._teacherAssignmentService.GiveATeacherClassesAsync(classes, teachers);
             return View(teacherAssignments);
         }
     }

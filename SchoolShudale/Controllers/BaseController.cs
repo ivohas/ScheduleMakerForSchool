@@ -16,9 +16,9 @@ namespace Library.Controllers
             return id;
         }
 
-        //protected bool IsAdmin()
-        //{
-        //    return User?.IsInRole(AdminRoleName) ?? false;
-        //}
+        protected bool IsAdmin()
+        {
+            return User?.IsInRole("Teacher") ?? false;
+        }
     }
 }

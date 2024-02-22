@@ -1,5 +1,6 @@
 ﻿using BookFindingAndRatingSystem.Data.Models;
 using Library.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Schedule.Data.Models;
@@ -17,6 +18,7 @@ namespace SchoolShudale.Controllers
             this._consultaionService = consultaionService;
         }
         [HttpGet]
+        [Authorize(Roles = "Teacher")]
         public IActionResult Create()
         {
             CreateConsultationViewModel consultation = new CreateConsultationViewModel();
